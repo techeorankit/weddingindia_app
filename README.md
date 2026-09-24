@@ -2,8 +2,8 @@
 
 <div align="center">
   <img src="https://img.shields.io/badge/Flutter-3.6+-02569B?style=for-the-badge&logo=flutter" alt="Flutter" />
-  <img src="https://img.shields.io/badge/Platform-Android%20%7C%20iOS-000000?style=for-the-badge" alt="Platform" />
-  <img src="https://img.shields.io/badge/Backend-PHP%20API-4B5563?style=for-the-badge" alt="Backend" />
+  <img src="https://img.shields.io/badge/Android%20%7C%20iOS-000000?style=for-the-badge" alt="Platform" />
+  <img src="https://img.shields.io/badge/PHP%20API-Backend-4B5563?style=for-the-badge" alt="Backend" />
   <img src="https://img.shields.io/badge/Firebase-Enabled-FFCA28?style=for-the-badge&logo=firebase" alt="Firebase" />
 </div>
 
@@ -11,22 +11,22 @@ A modern matrimonial Flutter application for discovering matches, managing profi
 
 ## Overview
 
-Wedding India App is built for a matchmaking platform that helps users:
+Wedding India App is a matchmaking platform that helps users:
 
 - create and manage their profile
-- search and explore compatible matches
+- explore compatible matches
 - filter by city, religion, education, and preferences
 - view profile details and media galleries
-- chat, call, and connect with matched profiles
-- manage premium plans and payment flows
-- access admin-controlled content and application logic
+- connect through chat, WhatsApp, and calls
+- access premium plans and payment flows
+- use admin-driven app content and API logic
 
 ## Features
 
 - User authentication and registration
 - Profile onboarding and updates
 - Match recommendation flow
-- City/location and preference settings
+- Location and preference settings
 - WhatsApp and call integration
 - Video and voice calling support
 - Payment and upgrade plans
@@ -99,24 +99,11 @@ Then open the Xcode project and complete signing, provisioning, and Apple Develo
 2. Add Android and iOS apps.
 3. Download the configuration files.
 4. Add the files to the correct Android/iOS project folders.
-5. Enable desired Firebase services such as Authentication and Firestore.
+5. Enable Authentication, Firestore, and messaging features.
 
 ## API Setup
 
-This app uses a PHP-based backend under the `api/` folder. Configure the base URLs and backend environment before running the app in production.
-
-## App Permissions
-
-The app uses permissions for:
-
-- camera
-- microphone
-- photo library
-- location
-
-## Screenshots
-
-> Add screenshots here after final app UI review.
+This app uses a PHP-based backend under the `api/` folder. Configure the base URLs and backend environment before production use.
 
 ## GitHub Repository
 
@@ -124,4 +111,4 @@ The app uses permissions for:
 
 ## License
 
-This project is intended for development and deployment use. Please verify licensing and ownership details before public or commercial release.
+This project is intended for development and deployment use. Please verify ownership, licensing, and production requirements before public release.
