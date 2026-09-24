@@ -1,0 +1,556 @@
+{
+  "info": {
+    "name": "Wedding India API",
+    "description": "Complete API collection for Wedding India App",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost/wedding-india-app/api",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Authentication",
+      "item": [
+        {
+          "name": "Send OTP",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\": \"9876543210\",\n  \"country_code\": \"+91\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth.php?action=send_otp",
+              "host": ["{{base_url}}"],
+              "path": ["auth.php"],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "send_otp"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Verify OTP",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "if (jsonData.status && jsonData.data.token) {",
+                  "    pm.collectionVariables.set('token', jsonData.data.token);",
+                  "    console.log('Token saved: ' + jsonData.data.token);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\": \"9876543210\",\n  \"country_code\": \"+91\",\n  \"otp\": \"1234\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth.php?action=verify_otp",
+              "host": ["{{base_url}}"],
+              "path": ["auth.php"],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "verify_otp"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/auth.php?action=logout",
+              "host": ["{{base_url}}"],
+              "path": ["auth.php"],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "logout"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "2. Dropdowns",
+      "item": [
+        {
+          "name": "Get All Dropdowns",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/dropdowns.php?type=all",
+              "host": ["{{base_url}}"],
+              "path": ["dropdowns.php"],
+              "query": [
+                {
+                  "key": "type",
+                  "value": "all"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Religions",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/dropdowns.php?type=religions",
+              "host": ["{{base_url}}"],
+              "path": ["dropdowns.php"],
+              "query": [
+                {
+                  "key": "type",
+                  "value": "religions"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get States",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/dropdowns.php?type=states",
+              "host": ["{{base_url}}"],
+              "path": ["dropdowns.php"],
+              "query": [
+                {
+                  "key": "type",
+                  "value": "states"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "3. Profile",
+      "item": [
+        {
+          "name": "Save Profile For",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profile_for\": \"Myself\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/profile.php?action=save_profile_for",
+              "host": ["{{base_url}}"],
+              "path": ["profile.php"],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "save_profile_for"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Save Basic Details",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"full_name\": \"Rahul Sharma\",\n  \"dob\": \"1995-05-15\",\n  \"gender\": \"Male\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/profile.php?action=save_basic",
+              "host": ["{{base_url}}"],
+              "path": ["profile.php"],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "save_basic"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Save Religion",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"religion_id\": 1,\n  \"caste\": \"Brahmin\",\n  \"mother_tongue_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/profile.php?action=save_religion",
+              "host": ["{{base_url}}"],
+              "path": ["profile.php"],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "save_religion"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Save Location",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"state_id\": 14,\n  \"city\": \"Mumbai\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/profile.php?action=save_location",
+              "host": ["{{base_url}}"],
+              "path": ["profile.php"],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "save_location"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Save Education",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"education_id\": 5,\n  \"profession\": \"Software Engineer\",\n  \"income_id\": 6\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/profile.php?action=save_education",
+              "host": ["{{base_url}}"],
+              "path": ["profile.php"],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "save_education"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Save Habits",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"height_id\": 15,\n  \"weight\": \"70 kg\",\n  \"eating_habit_id\": 1,\n  \"smoking_habit_id\": 1,\n  \"drinking_habit_id\": 1,\n  \"disability_id\": 1,\n  \"marital_status_id\": 1,\n  \"body_type_id\": 2,\n  \"complexion_id\": 2,\n  \"blood_group_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/profile.php?action=save_habits",
+              "host": ["{{base_url}}"],
+              "path": ["profile.php"],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "save_habits"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Save Partner Preference",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"age_min\": 22,\n  \"age_max\": 30,\n  \"religion_id\": 1,\n  \"min_height_id\": 10,\n  \"max_height_id\": 20,\n  \"income_id\": 5\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/profile.php?action=save_preference",
+              "host": ["{{base_url}}"],
+              "path": ["profile.php"],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "save_preference"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Save About Me",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bio\": \"I am a software engineer working in Mumbai. Looking for a life partner who shares similar values and interests. I enjoy reading, traveling, and spending time with family.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/profile.php?action=save_about",
+              "host": ["{{base_url}}"],
+              "path": ["profile.php"],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "save_about"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/profile.php?action=get",
+              "host": ["{{base_url}}"],
+              "path": ["profile.php"],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "get"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Photo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "photo",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/profile.php?action=upload_photo",
+              "host": ["{{base_url}}"],
+              "path": ["profile.php"],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "upload_photo"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "4. Matches",
+      "item": [
+        {
+          "name": "Find Matches",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/matches.php?action=find",
+              "host": ["{{base_url}}"],
+              "path": ["matches.php"],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "find"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "View Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/matches.php?action=view&id=2",
+              "host": ["{{base_url}}"],
+              "path": ["matches.php"],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "view"
+                },
+                {
+                  "key": "id",
+                  "value": "2"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "517853703130",
+    "firebase_url": "https://ahsas-35d3f-default-rtdb.firebaseio.com",
+    "project_id": "ahsas-35d3f",
+    "storage_bucket": "ahsas-35d3f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:517853703130:android:e575abcb9609251275eee3",
+        "android_client_info": {
+          "package_name": "com.weddingIndia.matrimony"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "517853703130-1djodhl95o5st9okeuc79tu600gv7db4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpeG5af7cIRg9g2CPPyF5Nt8NIyX46qSU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "517853703130-1djodhl95o5st9okeuc79tu600gv7db4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:517853703130:android:59a965fa259a26b375eee3",
+        "android_client_info": {
+          "package_name": "in.ahsas.ahsasapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "517853703130-96ng5gkus0jmope9h8u0r53e031i9j25.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.ahsas.ahsasapp",
+            "certificate_hash": "6562ed727b111cc0aea4b776daa2f6ed12b2ee9c"
+          }
+        },
+        {
+          "client_id": "517853703130-1djodhl95o5st9okeuc79tu600gv7db4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpeG5af7cIRg9g2CPPyF5Nt8NIyX46qSU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "517853703130-1djodhl95o5st9okeuc79tu600gv7db4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
